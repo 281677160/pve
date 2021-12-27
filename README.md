@@ -20,7 +20,7 @@ apk add curl bash
 ```
 #
 
-- ### (centos、ubuntu、debian、alpine)一键开启SSH
+- ### (centos、ubuntu、debian、alpine)一键开启root用户SSH
 ```sh
 bash -c  "$(curl -fsSL https://ghproxy.com/https://raw.githubusercontent.com/281677160/pve/main/ssh.sh)"
 ```
