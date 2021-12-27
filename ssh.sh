@@ -14,6 +14,8 @@ function system_check() {
     system_debian
   elif [[ "$(. /etc/os-release && echo "$ID")" == "alpine" ]]; then
     system_alpine
+  elif [[ "$(. /etc/os-release && echo "$ID")" == "openwrt" ]]; then
+    echo -e "\033[33m openwrt无需开启SSH \033[0m"
   else
     echo -e "\033[41;33m 不支持您的系统  \033[0m"
     exit 1
