@@ -4,11 +4,9 @@ function system_check() {
   if [[ "$(. /etc/os-release && echo "$ID")" == "centos" ]]; then
     system_centos
   elif [[ "$(. /etc/os-release && echo "$ID")" == "ubuntu" ]]; then
-    ssh_PermitRootLogin
-    service ssh restart
+    system_ubuntu
   elif [[ "$(. /etc/os-release && echo "$ID")" == "debian" ]]; then
-    ssh_PermitRootLogin
-    service ssh restart
+    system_debian
   elif [[ "$(. /etc/os-release && echo "$ID")" == "alpine" ]]; then
     system_alpine
   else
@@ -27,6 +25,33 @@ function system_centos() {
     ssh_PermitRootLogin
     service sshd restart
   fi
+  echo "开启SSH完成"
+}
+
+function system_ubuntu() {
+  if [[ ! -f /etc/ssh/sshd_config ]]; then
+    apt-get -y update
+    apt-get install -y openssh-server openssh-client
+    ssh_PermitRootLogin
+    service sshd restart
+  else
+    ssh_PermitRootLogin
+    service ssh restart
+  fi
+  echo "开启SSH完成"
+}
+
+function system_debian() {
+  if [[ ! -f /etc/ssh/sshd_config ]]; then
+    apt -y update
+    apt install -y openssh-server openssh-client
+    ssh_PermitRootLogin
+    service sshd restart
+  else
+    ssh_PermitRootLogin
+    service ssh restart
+  fi
+  echo "开启SSH完成"
 }
 
 function system_alpine() {
@@ -39,6 +64,7 @@ function system_alpine() {
     ssh_PermitRootLogin
     service sshd restart
   fi
+  echo "开启SSH完成"
 }
 
 function ssh_PermitRootLogin() {
