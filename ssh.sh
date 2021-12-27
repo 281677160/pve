@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+if [[ ! "$USER" == "root" ]]; then
+   echo -e "\033[41;33m 警告：请使用root用户操作!~~  \033[0m"
+   exit 1
+fi
+
 function system_check() {
   if [[ "$(. /etc/os-release && echo "$ID")" == "centos" ]]; then
     system_centos
@@ -10,7 +15,7 @@ function system_check() {
   elif [[ "$(. /etc/os-release && echo "$ID")" == "alpine" ]]; then
     system_alpine
   else
-    echo "不支持您的系统"
+    echo -e "\033[41;33m 不支持您的系统  \033[0m"
     exit 1
   fi
 }
@@ -25,7 +30,7 @@ function system_centos() {
     ssh_PermitRootLogin
     service sshd restart
   fi
-  echo "开启SSH完成"
+  echo -e "\033[32m 开启SSH完成 \033[0m"
 }
 
 function system_ubuntu() {
@@ -38,7 +43,7 @@ function system_ubuntu() {
     ssh_PermitRootLogin
     service ssh restart
   fi
-  echo "开启SSH完成"
+  echo -e "\033[32m 开启SSH完成 \033[0m"
 }
 
 function system_debian() {
@@ -51,7 +56,7 @@ function system_debian() {
     ssh_PermitRootLogin
     service ssh restart
   fi
-  echo "开启SSH完成"
+  echo -e "\033[32m 开启SSH完成 \033[0m"
 }
 
 function system_alpine() {
@@ -64,7 +69,7 @@ function system_alpine() {
     ssh_PermitRootLogin
     service sshd restart
   fi
-  echo "开启SSH完成"
+  echo -e "\033[32m 开启SSH完成 \033[0m"
 }
 
 function ssh_PermitRootLogin() {
