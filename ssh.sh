@@ -2,38 +2,46 @@
 
 function system_check() {
   if [[ "$(. /etc/os-release && echo "$ID")" == "centos" ]]; then
-    if [[ ! -f /etc/ssh/sshd_config ]]; then
-      yum install -y openssh-server
-      systemctl enable sshd.service
-      system_check
-      service sshd restart
-    else
-      system_check
-      service sshd restart
-    fi
+    system_centos
   elif [[ "$(. /etc/os-release && echo "$ID")" == "ubuntu" ]]; then
-      system_check
-      service ssh restart
+    ssh_PermitRootLogin
+    service ssh restart
   elif [[ "$(. /etc/os-release && echo "$ID")" == "debian" ]]; then
-      system_check
-      service ssh restart
+    ssh_PermitRootLogin
+    service ssh restart
   elif [[ "$(. /etc/os-release && echo "$ID")" == "alpine" ]]; then
-    if [[ ! -f /etc/ssh/sshd_config ]]; then
-      apk add openssh-server
-      apk add openssh-client
-      system_check
-      service sshd restart
-    else
-      system_check
-      service sshd restart
-    fi
+    system_alpine
   else
     echo "不支持您的系统"
     exit 1
   fi
 }
 
-function system_check() {
+function system_centos() {
+  if [[ ! -f /etc/ssh/sshd_config ]]; then
+    yum install -y openssh-server
+    systemctl enable sshd.service
+    ssh_PermitRootLogin
+    service sshd restart
+  else
+    ssh_PermitRootLogin
+    service sshd restart
+  fi
+}
+
+function system_alpine() {
+  if [[ ! -f /etc/ssh/sshd_config ]]; then
+    yum install -y openssh-server
+    systemctl enable sshd.service
+    ssh_PermitRootLogin
+    service sshd restart
+  else
+    ssh_PermitRootLogin
+    service sshd restart
+  fi
+}
+
+function ssh_PermitRootLogin() {
   if [[ `grep -c "ClientAliveInterval 30" /etc/ssh/sshd_config` == '0' ]]; then
     sed -i '/ClientAliveInterval/d' /etc/ssh/sshd_config
     sed -i '/ClientAliveCountMax/d' /etc/ssh/sshd_config
