@@ -22,7 +22,7 @@ function system_check() {
 
 function system_centos() {
   if [[ ! -f /etc/ssh/sshd_config ]]; then
-    yum install -y openssh-server
+    yum install -y openssh-server openssh-client
     systemctl enable sshd.service
     ssh_PermitRootLogin
     service sshd restart
@@ -38,7 +38,7 @@ function system_ubuntu() {
     apt-get -y update
     apt-get install -y openssh-server openssh-client
     ssh_PermitRootLogin
-    service sshd restart
+    service ssh restart
   else
     ssh_PermitRootLogin
     service ssh restart
@@ -51,7 +51,7 @@ function system_debian() {
     apt -y update
     apt install -y openssh-server openssh-client
     ssh_PermitRootLogin
-    service sshd restart
+    service ssh restart
   else
     ssh_PermitRootLogin
     service ssh restart
@@ -61,8 +61,8 @@ function system_debian() {
 
 function system_alpine() {
   if [[ ! -f /etc/ssh/sshd_config ]]; then
-    yum install -y openssh-server
-    systemctl enable sshd.service
+    apk add openssh-server
+    apk add openssh-client
     ssh_PermitRootLogin
     service sshd restart
   else
