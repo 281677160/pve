@@ -22,6 +22,7 @@ function system_check() {
 
 function system_centos() {
   if [[ ! -f /etc/ssh/sshd_config ]]; then
+    echo -e "\033[33m 安装SSH \033[0m"
     yum install -y openssh-server openssh-client
     systemctl enable sshd.service
     ssh_PermitRootLogin
@@ -35,6 +36,7 @@ function system_centos() {
 
 function system_ubuntu() {
   if [[ ! -f /etc/ssh/sshd_config ]]; then
+    echo -e "\033[33m 安装SSH \033[0m"
     apt-get -y update
     apt-get install -y openssh-server openssh-client
     ssh_PermitRootLogin
@@ -48,6 +50,7 @@ function system_ubuntu() {
 
 function system_debian() {
   if [[ ! -f /etc/ssh/sshd_config ]]; then
+    echo -e "\033[33m 安装SSH \033[0m"
     apt -y update
     apt install -y openssh-server openssh-client
     ssh_PermitRootLogin
@@ -61,8 +64,10 @@ function system_debian() {
 
 function system_alpine() {
   if [[ ! -f /etc/ssh/sshd_config ]]; then
+    echo -e "\033[33m 安装SSH \033[0m"
     apk add openssh-server
     apk add openssh-client
+    rc-update add sshd
     ssh_PermitRootLogin
     service sshd restart
   else
