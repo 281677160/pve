@@ -31,7 +31,7 @@ function system_centos() {
     ssh_PermitRootLogin
     service sshd restart
   fi
-  echo -e "\033[32m 开启SSH完成 \033[0m"
+  echo -e "\033[32m 开启root账户SSH完成 \033[0m"
   exit 0
 }
 
@@ -46,7 +46,7 @@ function system_ubuntu() {
     ssh_PermitRootLogin
     service ssh restart
   fi
-  echo -e "\033[32m 开启SSH完成 \033[0m"
+  echo -e "\033[32m 开启root账户SSH完成 \033[0m"
   exit 0
 }
 
@@ -61,7 +61,7 @@ function system_debian() {
     ssh_PermitRootLogin
     service ssh restart
   fi
-  echo -e "\033[32m 开启SSH完成 \033[0m"
+  echo -e "\033[32m 开启root账户SSH完成 \033[0m"
   exit 0
 }
 
@@ -77,7 +77,7 @@ function system_alpine() {
     ssh_PermitRootLogin
     service sshd restart
   fi
-  echo -e "\033[32m 开启SSH完成 \033[0m"
+  echo -e "\033[32m 开启root账户SSH完成 \033[0m"
   exit 0
 }
 
