@@ -46,9 +46,7 @@ cp -fr /etc/apt/sources.list.d/pve-enterprise.list /etc/apt/sources.list.d/pve-e
 rm -rf /etc/apt/sources.list.d/pve-enterprise.list
 echo "deb http://mirrors.ustc.edu.cn/proxmox/debian/pve bullseye pve-no-subscription" >/etc/apt/sources.list.d/pve-install-repo.list
 echo
-echo
 TIME g "下载PVE7.0源的密匙!"
-echo
 echo
 cp -fr /etc/apt/trusted.gpg.d/proxmox-release-bullseye.gpg /etc/apt/trusted.gpg.d/proxmox-release-bullseye.gpg.bak
 rm -fr /etc/apt/trusted.gpg.d/proxmox-release-bullseye.gpg
