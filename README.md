@@ -25,7 +25,7 @@ apk add curl bash
 bash -c  "$(curl -fsSL https://ghproxy.com/https://raw.githubusercontent.com/281677160/pve/main/ssh.sh)"
 ```
 ---
-- ### PVE一键lxc换源，去掉订阅
+- ### PVE一键升级PVE，lxc换源，去掉无效订阅
 ```sh
 bash -c  "$(curl -fsSL https://ghproxy.com/https://raw.githubusercontent.com/281677160/pve/main/pvehy.sh)"
 ```
