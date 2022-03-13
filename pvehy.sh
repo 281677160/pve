@@ -19,15 +19,6 @@ TIME() {
 }
 cp /etc/apt/sources.list /etc/apt/sources.list.bak
 echo '
-# 阿里云源（升级不了版本）
-# deb http://mirrors.aliyun.com/debian/ buster main non-free contrib
-# deb http://mirrors.aliyun.com/debian/ buster-updates main non-free contrib
-# deb http://mirrors.aliyun.com/debian/ buster-backports main non-free contrib
-# deb-src http://mirrors.aliyun.com/debian/ buster main non-free contrib
-# deb-src http://mirrors.aliyun.com/debian/ buster-updates main non-free contrib
-# deb-src http://mirrors.aliyun.com/debian/ buster-backports main non-free contrib
-# deb http://mirrors.aliyun.com/debian-security/ buster/updates main non-free contrib
-# deb-src http://mirrors.aliyun.com/debian-security/ buster/updates main non-free contrib
 # 官方默认源
 deb http://deb.debian.org/debian bullseye main contrib
 deb http://deb.debian.org/debian bullseye-updates main contrib
@@ -72,6 +63,7 @@ echo
 TIME g "更换DNS为223.5.5.5和114.114.114.114"
 echo
 cp /etc/resolv.conf /etc/resolv.conf.bak
+cp /etc/apt/sources.list.bak /etc/apt/sources.list
 echo '
 search com
 nameserver 223.5.5.5
