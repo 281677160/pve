@@ -31,7 +31,7 @@ echo
 apt update -y && apt install -y net-tools curl wget sudo
 apt dist-upgrade -y
 echo
-TIME g "更换源"
+TIME g "更换LXC下载源"
 echo
 cp -fr /etc/apt/sources.list.d/pve-enterprise.list /etc/apt/sources.list.d/pve-enterprise.list.bak
 rm -rf /etc/apt/sources.list.d/pve-enterprise.list
