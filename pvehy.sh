@@ -28,7 +28,7 @@ sed -i '1d' /etc/apt/sources.list
 echo
 TIME g "升级PVE"
 echo
-apt update -y && apt install -y net-tools curl wget
+apt update -y && apt install -y net-tools curl wget sudo
 apt dist-upgrade -y
 echo
 TIME g "更换源"
