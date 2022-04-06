@@ -86,9 +86,11 @@ function ssh_PermitRootLogin() {
     sed -i '/ClientAliveInterval/d' /etc/ssh/sshd_config
     sed -i '/ClientAliveCountMax/d' /etc/ssh/sshd_config
     sed -i '/PermitRootLogin/d' /etc/ssh/sshd_config
+    sed -i '/PasswordAuthentication/d' /etc/ssh/sshd_config
     sh -c 'echo ClientAliveInterval 30 >> /etc/ssh/sshd_config'
     sh -c 'echo ClientAliveCountMax 6 >> /etc/ssh/sshd_config'
     sh -c 'echo PermitRootLogin yes >> /etc/ssh/sshd_config'
+    sh -c 'echo PasswordAuthentication yes >> /etc/ssh/sshd_config'
   fi
 }
 system_check "$@"
