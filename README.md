@@ -1,16 +1,16 @@
 # pve
 
-- 进入服务器后,切换到root用户,下面两个命令一般都能进入root用户,如果不行请自行百度
+- 进入服务器后,切换到root用户,下面命令一般都切进入root用户,如果不行请自行百度
 ```sh
 sudo -i || su - root
 ```
 
 - 如果您服务器本身是没密码的,比如谷歌云，甲骨云这些，请设置密码
 ```sh
-echo root:你想要设置的密码 |sudo chpasswd root
+echo root:你想要设置的密码 |chpasswd root
 
 比如：
-echo root:adminadmin |sudo chpasswd root
+echo root:adminadmin |chpasswd root
 ```
 
 - 为防止系统没安装curl，使用不了一键命令，使用下面的一键命令之前先执行一次安装curl命令
