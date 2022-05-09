@@ -14,3 +14,14 @@ bash -c  "$(curl -fsSL https://ghproxy.com/https://raw.githubusercontent.com/281
 ```sh
 bash -c  "$(curl -fsSL https://ghproxy.com/https://raw.githubusercontent.com/281677160/pve/main/pvehy.sh)"
 ```
+---
+- ### 记录一下PVE安装openwrt时候转换固件格式命令
+```sh
+qm importdisk 虚拟机ID /var/lib/vz/template/iso/固件名字 local-lvm
+
+比如：
+
+qm importdisk 101 /var/lib/vz/template/iso/x86-64.img local-lvm
+```
+
+
