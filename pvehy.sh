@@ -33,8 +33,10 @@ apt dist-upgrade -y
 echo
 TIME g "更换LXC下载源"
 echo
-cp -fr /etc/apt/sources.list.d/pve-enterprise.list /etc/apt/sources.list.d/pve-enterprise.list.bak
-rm -rf /etc/apt/sources.list.d/pve-enterprise.list
+if [[ -f "/etc/apt/sources.list.d/pve-enterprise.list" ]]; then
+  cp -fr /etc/apt/sources.list.d/pve-enterprise.list /etc/apt/sources.list.d/pve-enterprise.list.bak
+  rm -rf /etc/apt/sources.list.d/pve-enterprise.list
+fi
 echo "deb http://mirrors.ustc.edu.cn/proxmox/debian/pve bullseye pve-no-subscription" >/etc/apt/sources.list.d/pve-install-repo.list
 echo
 TIME g "下载PVE7.0源的密匙!"
