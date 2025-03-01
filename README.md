@@ -7,12 +7,12 @@ apt -y update && apt -y install curl || yum install -y curl || apk add curl bash
 
 - ### (centos、ubuntu、debian、alpine)一键开启root用户SSH连接
 ```sh
-bash -c  "$(curl -fsSL https://ghproxy.com/https://raw.githubusercontent.com/281677160/pve/main/ssh.sh)"
+bash -c  "$(curl -fsSL https://ghfast.top/https://raw.githubusercontent.com/281677160/pve/main/ssh.sh)"
 ```
 ---
 - ### PVE一键升级PVE，lxc换源，去掉无效订阅
 ```sh
-bash -c  "$(curl -fsSL https://ghproxy.com/https://raw.githubusercontent.com/281677160/pve/main/pvehy.sh)"
+bash -c  "$(curl -fsSL https://ghfast.top/https://raw.githubusercontent.com/281677160/pve/main/pvehy.sh)"
 ```
 ---
 - ### 记录一下PVE安装openwrt时候转换固件格式命令
