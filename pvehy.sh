@@ -88,12 +88,5 @@ nameserver 223.5.5.5
 nameserver 114.114.114.114
 "
 echo "更换DNS完成"
-
-if [[ -f pv.sh ]]; then
-    rm -fr pv.sh
-fi
-if [[ -f pve.sh ]]; then
-    rm -fr pve.sh
-fi
-
 echo "重启PVE，需要几分钟时间，请耐心等候..."
+reboot
