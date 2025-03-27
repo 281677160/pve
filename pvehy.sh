@@ -63,7 +63,6 @@ fi
 echo "更新文件源"
 apt update -y
 echo "升级PVE,所需时间或比较长,请耐心等候......"
-apt install -y net-tools wget
 apt dist-upgrade -y
 
 # 去掉无效订阅
