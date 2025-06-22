@@ -42,6 +42,7 @@ replace_sources_list "/etc/apt/sources.list.d/pve-install-repo.list" "deb http:/
 sed -i 's#url => "http.*/images"#url => "https://mirrors.ustc.edu.cn/proxmox/images"#g' "/usr/share/perl5/PVE/APLInfo.pm"
 
 apt update -y
+dpkg --configure -a
 apt install -y net-tools wget
 
 # 下载PVE8.0源的密匙并验证
