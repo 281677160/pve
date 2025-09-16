@@ -68,8 +68,22 @@ apt dist-upgrade -y
 
 # 去掉无效订阅
 backup_file "/usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js"
-sed -i 's#if (res === null || res === undefined || !res || res#if (false) {#g' "/usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js"
-sed -i '/data.status.toLowerCase/d' "/usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js"
+sed -i '/Ext.Msg.show({/,/^[[:space:]]*});[[:space:]]*$/c\
+                        \/*\
+                        Ext.Msg.show({\
+                            title: gettext('\''No valid subscription'\''),\
+                            icon: Ext.Msg.WARNING,\
+                            message: Proxmox.Utils.getNoSubKeyHtml(res.data.url),\
+                            buttons: Ext.Msg.OK,\
+                            callback: function (btn) {\
+                                if (btn !== '\''ok'\'') {\
+                                    return;\
+                                }\
+                                orig_cmd();\
+                            },\
+                        });\
+                        *\/\
+                        orig_cmd();' /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js
 echo "去除无效订阅弹窗完成"
 
 # 设置Web控制台默认语言为中文
